@@ -26,9 +26,9 @@ jobs:
 
     - name: Install JMeter
       run: |
-        wget https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.4.1.tgz
-        tar -xvzf apache-jmeter-5.4.1.tgz
-        mv apache-jmeter-5.4.1 /opt/jmeter
+        wget https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.5.tgz
+        tar -xvzf apache-jmeter-5.5.tgz
+        mv apache-jmeter-5.5 /opt/jmeter
         echo "/opt/jmeter/bin" >> $GITHUB_PATH  # Add JMeter to PATH for future steps
 
     - name: Run JMeter Test Plan
