@@ -33,7 +33,7 @@ jobs:
 
     - name: Run JMeter Test Plan
       run: |
-        jmeter -n -t src/test/jmeter/test-plan-new.jmx -l results/output.jtl
+        jmeter -n -t <correct-path-to-your-test-plan>.jmx -l results/output.jtl
 
     - name: Generate JMeter Report
       run: |
