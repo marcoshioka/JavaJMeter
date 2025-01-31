@@ -40,7 +40,7 @@ jobs:
         jmeter -g results/output.jtl -o results/report
 
     - name: Upload JMeter Report as an artifact
-      uses: actions/upload-artifact@v3  # Use the latest version of the action
+      uses: actions/upload-artifact@v4  # Use the latest version of the action
       with:
         name: jmeter-report
         path: results/report
