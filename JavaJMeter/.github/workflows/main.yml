@@ -32,11 +32,12 @@ jobs:
         echo "/opt/jmeter/bin" >> $GITHUB_PATH  # Add JMeter to PATH for future steps
 
     - name: List repository contents
-      run: ls -R
+      run: ls -R  # This will list all files to confirm the path to your test plan
 
     - name: Run JMeter Test Plan
       run: |
-        jmeter -n -t src/test/jmeter/test-plan-new.jmx -l results/output.jtl  # Update this path to the correct path of your test plan
+        # Update this path based on the `ls -R` output
+        jmeter -n -t src/test/jmeter/test-plan-new.jmx -l results/output.jtl  # Ensure the path is correct
 
     - name: Generate JMeter Report
       run: |
