@@ -36,8 +36,8 @@ jobs:
 
     - name: Run JMeter Test Plan
       run: |
-        # Update this path based on the `ls -R` output
-        jmeter -n -t src/test/jmeter/test-plan-new.jmx -l results/output.jtl  # Ensure the path is correct
+        # Adjusted path to point to the correct location of the test plan
+        jmeter -n -t ./JavaJMeter/src/test/jmeter/test-plan-new.jmx -l results/output.jtl  # Use the correct path
 
     - name: Generate JMeter Report
       run: |
