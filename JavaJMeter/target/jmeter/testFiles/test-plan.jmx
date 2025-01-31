@@ -1,0 +1,37 @@
+<!DOCTYPE jmeterTestPlan>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.4.3">
+  <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="500 Users for 5 Minutes Test Plan" enabled="true">
+    <stringProp name="TestPlan.comments"></stringProp>
+    <boolProp name="TestPlan.functional_mode">false</boolProp>
+    <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+    <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="500 Users" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <stringProp name="ThreadGroup.num_threads">500</stringProp> <!-- 500 users -->
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp> <!-- Ramp-up time (60 sec) -->
+        <stringProp name="ThreadGroup.duration">300</stringProp> <!-- Duration (300 sec / 5 mins) -->
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">1</intProp>
+        </elementProp>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request to example.com" enabled="true">
+            <stringProp name="HTTPSampler.domain">example.com</stringProp> <!-- Target domain -->
+            <stringProp name="HTTPSampler.port">80</stringProp> <!-- Default HTTP port -->
+            <stringProp name="HTTPSampler.protocol">http</stringProp> <!-- HTTP Protocol -->
+            <stringProp name="HTTPSampler.path">/</stringProp> <!-- Path, in this case, root path -->
+            <stringProp name="HTTPSampler.method">GET</stringProp> <!-- HTTP GET request -->
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp> <!-- Follow redirects -->
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.do_multiple_separate_requests">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <hashTree/>
+          </HTTPSamplerProxy>
+        </hashTree>
+      </ThreadGroup>
+    </hashTree>
+  </TestPlan>
+</jmeterTestPlan>
