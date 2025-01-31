@@ -31,19 +31,19 @@ jobs:
         mv apache-jmeter-5.5 /opt/jmeter
         echo "/opt/jmeter/bin" >> $GITHUB_PATH  # Add JMeter to PATH for future steps
 
-    - name: List directory contents
+    - name: List repository contents
       run: ls -R
 
     - name: Run JMeter Test Plan
       run: |
-        jmeter -n -t src/test/jmeter/test-plan-new.jmx -l results/output.jtl  
+        jmeter -n -t src/test/jmeter/test-plan-new.jmx -l results/output.jtl  # Update this path to the correct path of your test plan
 
     - name: Generate JMeter Report
       run: |
         jmeter -g results/output.jtl -o results/report
 
     - name: Upload JMeter Report as an artifact
-      uses: actions/upload-artifact@v4  
+      uses: actions/upload-artifact@v4  # Use the latest version of the action
       with:
         name: jmeter-report
         path: results/report
